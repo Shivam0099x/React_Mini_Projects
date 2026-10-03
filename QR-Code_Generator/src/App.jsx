@@ -18,10 +18,10 @@ const App = () => {
   }
 
   return (
-    <div className='min-h-screen w-full bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 text-white flex flex-col items-center justify-center p-6 gap-10'>
+    <div className='min-h-screen w-full bg-linear-to-br from-zinc-900 via-zinc-800 to-zinc-900 text-white flex flex-col items-center justify-center p-6 gap-10'>
 
       <div className='text-center space-y-2'>
-        <h1 className='text-4xl font-bold bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent'>
+        <h1 className='text-4xl font-bold bg-linear-to-r from-white to-zinc-400 bg-clip-text text-transparent'>
           QR Code Generator
         </h1>
         <p className='text-zinc-400 text-sm'>Turn any text or URL into a QR code instantly</p>
