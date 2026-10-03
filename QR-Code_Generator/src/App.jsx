@@ -63,7 +63,7 @@ const App = () => {
               />
             </div>
           ) : (
-            <div className='w-[220px] h-[220px] border-2 border-dashed border-zinc-700 rounded-2xl flex items-center justify-center text-zinc-500 text-sm text-center px-6'>
+            <div className='w-55 h-55 border-2 border-dashed border-zinc-700 rounded-2xl flex items-center justify-center text-zinc-500 text-sm text-center px-6'>
               Your QR code will appear here
             </div>
           )}
