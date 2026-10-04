@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import Form from "../Others/Form"
+import AllTasks from "../Task/AllTasks";
 
 const AdminDashboard = () => {
   return (
-    <div>
-      Admin...
-    </div>
-  )
-}
+    <>
+    <Form/>
+    <AllTasks/>
+    </>
+  );
+};
 
-export default AdminDashboard
+export default AdminDashboard;

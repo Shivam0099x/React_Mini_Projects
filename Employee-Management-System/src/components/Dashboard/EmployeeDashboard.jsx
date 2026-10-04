@@ -1,9 +1,12 @@
 import React from 'react'
+import TaskList from '../Task/TaskList'
+import TaskNumber from '../Task/TaskNumber'
 
 const EmployeeDashboard = () => {
   return (
     <div>
-      Employee
+      <TaskNumber/>
+      <TaskList/>
     </div>
   )
 }
