@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+// import { AuthContext } from "../../context/AuthProvider";
 
-const Login = () => {
+const Login = ({handleLogin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // const {theme} = useContext(AuthContext)
+
+  // console.log(handleLogin)
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Clickedd... ${email} ${" "} ${password}`);
-    console.log(email, password)
+    // alert(`Clickedd... ${email} ${" "} ${password}`);
+    // console.log(email, password)
+
+    handleLogin(email,password)
 
     setEmail("")
     setPassword("")
@@ -15,8 +22,8 @@ const Login = () => {
 
   return (
     <div className="w-full h-[65vh] flex items-center justify-center">
-      <div className=" p-5 rounded-xl bg-zinc-800 flex items-center justify-center flex-col gap-5">
-        <h2 className="text-xl font-bold">Login Page</h2>
+      <div className=" p-5 rounded-xl bg-zinc-800 flex items-center justify-center flex-col gap-10 shadow shadow-zinc-600 ">
+        <h2 className="text-xl font-bold">Login Page </h2>
         <div className="flex items-center justify-center flex-col gap-3 ">
           <input
             type="text"
