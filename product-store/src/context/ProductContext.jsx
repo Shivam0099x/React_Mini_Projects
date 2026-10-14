@@ -22,7 +22,12 @@ export const ProductContextProvider = ({children})=>{
     const decreaseQuantity = (id)=>{
         // console.log(id)
 
-        
+        let inTheCart = cart.find(elem => elem.id === id)
+
+        if(inTheCart?.quantity === 1 ){
+            setCart(prev => prev.filter(elem => elem.id != inTheCart.id))
+            return;
+        }
 
 
 
