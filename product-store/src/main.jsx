@@ -5,9 +5,7 @@ import App from './App.jsx'
 import { ProductContextProvider } from './context/ProductContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <ProductContextProvider>
     <App />
     </ProductContextProvider>
-  </StrictMode>,
 )

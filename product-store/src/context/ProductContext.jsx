@@ -13,6 +13,23 @@ export const ProductContextProvider = ({children})=>{
         setProducts(res.data)
     }
 
+
+    const increaseQuantity = (id)=>{
+        setCart(prev => prev.map(elem => elem.id === id ? {...elem, quantity : elem.quantity + 1} : elem))
+    }
+
+
+    const decreaseQuantity = (id)=>{
+        // console.log(id)
+
+        
+
+
+
+        setCart(prev => prev.map(elem => elem.id === id ? {...elem, quantity : elem.quantity - 1} : elem))
+    }
+
+
     useEffect(()=>{
         getProducts()
     }, [])
@@ -20,7 +37,7 @@ export const ProductContextProvider = ({children})=>{
 
 
 
-    return <ProductContext value={{toggle, setToggle, products, setProducts, cart, setCart}} >
+    return <ProductContext value={{toggle, setToggle, products, setProducts, cart, setCart, increaseQuantity, decreaseQuantity}} >
         {children}
     </ProductContext>
 }

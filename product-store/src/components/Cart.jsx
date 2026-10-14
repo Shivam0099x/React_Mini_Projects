@@ -2,7 +2,17 @@ import React, { useContext } from 'react';
 import { ProductContext } from '../context/ProductContext';
 
 const Cart = () => {
-  const { cart } = useContext(ProductContext);
+  const { cart, decreaseQuantity, increaseQuantity, setCart } = useContext(ProductContext);
+
+
+  const handleRemove = (id)=>{
+      // console.log(id)
+      setCart(prev => prev.filter(elem=> elem.id != id))
+  }
+
+
+
+
 
   if (cart.length === 0) {
     return (
@@ -52,18 +62,18 @@ const Cart = () => {
             {/* Actions */}
             <div className="flex items-center gap-4">
               <div className="flex items-center border border-gray-300 rounded-lg">
-                <button className="px-3 py-1 text-gray-700 hover:bg-gray-100">
+                <button className="px-3 py-1 text-gray-700 hover:bg-gray-100" onClick={()=> decreaseQuantity(item.id)} >
                   −
                 </button>
-                <span className="px-3 py-1 text-sm border-x border-gray-300">
+                <span className="px-3 py-1 text-sm border-x text-zinc-900 border-gray-300">
                   {item.quantity || 1}
                 </span>
-                <button className="px-3 py-1 text-gray-700 hover:bg-gray-100">
+                <button className="px-3 py-1 text-gray-700 hover:bg-gray-100" onClick={()=> increaseQuantity(item.id)}>
                   +
                 </button>
               </div>
 
-              <button className="text-sm text-red-500 hover:text-red-700 font-medium">
+              <button className="text-sm text-red-500 hover:text-red-700 font-medium" onClick={()=> handleRemove(item.id)}>
                 Remove
               </button>
             </div>
