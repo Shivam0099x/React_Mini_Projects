@@ -7,10 +7,9 @@ const MainLayout = () => {
     <div>
        <Navbar/>
 
-        <div>
+        <div className='bg-zinc-900 min-h-screen p-10'>
             <Outlet/>
         </div>
-      
     </div>
   )
 }

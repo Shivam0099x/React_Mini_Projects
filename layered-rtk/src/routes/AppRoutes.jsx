@@ -9,31 +9,27 @@ import AboutPage from "../shared/ui/pages/AboutPage";
 import NotFound from "../shared/ui/pages/NotFound";
 import MainProtected from "./protected/MainProtected";
 import PublicProtected from "./protected/PublicProtected";
-import ProductPage from "../features/products/ui/pages/ProductPage"
+import ProductPage from "../features/products/ui/pages/ProductPage";
 import OrderPage from "../features/orders/ui/pages/OrderPage";
 import CartPage from "../features/cart/ui/pages/CartPage";
 import { useEffect } from "react";
 // import { hydrateUserApi } from "../features/auth/api/authApi";
 import { useDispatch } from "react-redux";
 import { hydrateUserAction } from "../features/auth/state/authSlice";
+import ProductDetailsPage from "../features/products/ui/pages/ProductDetailsPage";
 
 const AppRoutes = () => {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-
-  useEffect(()=>{
-    (()=>{
+  useEffect(() => {
+    (() => {
       // const res = await hydrateUserApi()
       // console.log(res)
       // dispatch(addUser(res))
 
-      dispatch(hydrateUserAction())
-    })()
-  },[])
-
-
-
-
+      dispatch(hydrateUserAction());
+    })();
+  }, []);
 
   const router = createBrowserRouter([
     {
@@ -74,15 +70,19 @@ const AppRoutes = () => {
             },
             {
               path: "product",
-              element: <ProductPage/>,
+              element: <ProductPage />,
+            },
+            {
+              path: "product/:id",
+              element: <ProductDetailsPage />,
             },
             {
               path: "cart",
-              element: <CartPage/>,
+              element: <CartPage />,
             },
             {
               path: "order",
-              element: <OrderPage/>,
+              element: <OrderPage />,
             },
           ],
         },
