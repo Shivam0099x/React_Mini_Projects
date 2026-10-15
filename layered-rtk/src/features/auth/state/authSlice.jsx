@@ -16,9 +16,28 @@ export const loginUserAction = createAsyncThunk("auth/login", async (credentials
         return res.data
         
     } catch (error) {
+        toast.error("login failed")
         return rejectWithValue("Error in login User Action")
     }
+})
 
+
+export const hydrateUserAction = createAsyncThunk("auth/hydrate", async (_, {rejectWithValue})=>{
+    let token = localStorage.getItem("accessToken")
+    try {
+        const res = await api.get('/auth/me',{
+            headers : {
+              'Authorization' : `Bearer ${token}`
+            }
+        })
+    
+        // console.log("result from login user api", res)
+        toast.success("User Authenticated")
+        return res.data
+    } catch (error) {
+        toast.error("Unauthorized User/Access")
+        console.log("Error in login user api", error)
+    }
 })
 
 
@@ -31,18 +50,18 @@ export const authSlice = createSlice({
     },
 
     reducers:{
-        addUser : (state, action)=>{
-            state.user = action.payload
-            state.isAuthenticated = true
-            state.isLoading = false
-        },
+        // addUser : (state, action)=>{
+        //     state.user = action.payload
+        //     state.isAuthenticated = true
+        //     state.isLoading = false
+        // },
 
-        deleteUser : (state, action)=>{
-            state.user = null
-            state.isAuthenticated = false
-            state.isLoading = false
+        // deleteUser : (state, action)=>{
+        //     state.user = null
+        //     state.isAuthenticated = false
+        //     state.isLoading = false
 
-        }
+        // }
     },
     extraReducers : (builder)=>{
 
@@ -59,12 +78,24 @@ export const authSlice = createSlice({
              state.isLoading = false
             //  state.isAuthenticated = false
         })
+        .addCase(hydrateUserAction.pending, (state, action)=>{
+            state.isLoading = true
+        })
+        .addCase(hydrateUserAction.fulfilled, (state, action)=>{
+            state.user = action.payload
+            state.isLoading = false
+            state.isAuthenticated = true
+        })
+        .addCase(hydrateUserAction.rejected, (state, action)=>{
+             state.isLoading = false
+            //  state.isAuthenticated = false
+        })
 
     }
 })
 
 
 
-export const {addUser, deleteUser } = authSlice.actions
+// export const {addUser, deleteUser } = authSlice.actions
 export default authSlice.reducer
 

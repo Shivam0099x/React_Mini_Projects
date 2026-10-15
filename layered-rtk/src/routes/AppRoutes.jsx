@@ -13,19 +13,21 @@ import ProductPage from "../features/products/ui/pages/ProductPage"
 import OrderPage from "../features/orders/ui/pages/OrderPage";
 import CartPage from "../features/cart/ui/pages/CartPage";
 import { useEffect } from "react";
-import { hydrateUserApi } from "../features/auth/api/authApi";
+// import { hydrateUserApi } from "../features/auth/api/authApi";
 import { useDispatch } from "react-redux";
-import { addUser } from "../features/auth/state/authSlice";
+import { hydrateUserAction } from "../features/auth/state/authSlice";
 
 const AppRoutes = () => {
 
   const dispatch = useDispatch()
 
   useEffect(()=>{
-    (async()=>{
-      const res = await hydrateUserApi()
-      console.log(res)
-      dispatch(addUser(res))
+    (()=>{
+      // const res = await hydrateUserApi()
+      // console.log(res)
+      // dispatch(addUser(res))
+
+      dispatch(hydrateUserAction())
     })()
   },[])
 

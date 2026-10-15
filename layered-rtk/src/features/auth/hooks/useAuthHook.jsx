@@ -1,10 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 import {useForm } from "react-hook-form"
-import { loginUserApi } from '../api/authApi'
+// import { loginUserApi } from '../api/authApi'
 import {useSelector, useDispatch} from "react-redux"
-import {addUser, loginUserAction} from "../../auth/state/authSlice"
+// import {loginUserAction} from "../../auth/state/authSlice"
 import { toast } from 'react-toastify'
+import { loginUserAction } from '../state/authSlice'
 
 const useAuth = () => {
     const navigate = useNavigate()
